@@ -1,168 +1,571 @@
-/* App.css */
-.app-container {
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
-  text-align: center;
-  font-family: Arial, sans-serif;
+/* App.css - hello-World Custom Styles */
+
+/* ========== ROOT VARIABLES ========== */
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c757d;
+  --success-color: #198754;
+  --danger-color: #dc3545;
+  --light-bg: #f8f9fa;
+  --border-color: #ced4da;
+  --text-dark: #212529;
+  --text-muted: #6c757d;
+  --transition: all 0.3s ease;
 }
 
-h1 {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
-
-.input-textarea {
-  width: 100%;
-  height: 100px;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1em;
-  font-family: inherit;
-}
-
-.translate-button {
-  padding: 10px;
-  font-size: 1.2em;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
+/* ========== CUSTOM LANGUAGE DROPDOWN STYLING ========== */
+.custom-language-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3e%3cpolyline points="6 9 12 15 18 9"%3e%3c/polyline%3e%3c/svg%3e');
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.2em;
+  padding-right: 2.5rem;
   cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
-.translate-button:hover {
-  background-color: #45a049;
+.custom-language-select:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.1rem rgba(13, 110, 253, 0.15);
 }
 
-.error-message {
-  color: red;
-  font-size: 1.1em;
+.custom-language-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  outline: none;
 }
 
-.translation-box {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 10px;
-  text-align: left;
+/* Custom option styling (limited browser support) */
+.custom-language-select option {
+  padding: 0.75rem 1rem;
+  background-color: white;
+  color: #212529;
+  font-size: 1rem;
+}
+
+.custom-language-select option:hover {
+  background-color: rgba(13, 110, 253, 0.1);
+}
+
+/* Dark mode language select */
+.dark-theme .custom-language-select {
+  background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23e2e8f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3e%3cpolyline points="6 9 12 15 18 9"%3e%3c/polyline%3e%3c/svg%3e');
+}
+
+.dark-theme .custom-language-select option {
+  background-color: #2d3748;
+  color: #e2e8f0;
+}
+
+/* ========== CUSTOM SCROLLBAR ========== */
+/* For Webkit browsers (Chrome, Safari, Edge) */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+  transition: var(--transition);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0b5ed7;
+}
+
+/* For select dropdowns */
+.form-select {
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Custom scrollbar for select options */
+select.form-select {
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+/* ========== DROPDOWN CUSTOMIZATION ========== */
+.dropdown-menu {
+  max-height: 250px;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+}
+
+.dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+.dropdown-item {
+  transition: var(--transition);
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(13, 110, 253, 0.1);
+  color: var(--primary-color);
+}
+
+.dropdown-item:active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* ========== RTL (RIGHT-TO-LEFT) SUPPORT ========== */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
 }
 
 [dir="rtl"] .form-control,
 [dir="rtl"] .form-select {
   text-align: right;
+  direction: rtl;
 }
 
-[dir="rtl"] .card {
+[dir="rtl"] textarea {
   text-align: right;
+  direction: rtl;
 }
 
-/* Add animation effect for the arrows */
+/* RTL Specific adjustments */
+[dir="rtl"] .me-2 {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+}
+
+[dir="rtl"] .ms-2 {
+  margin-right: 0.5rem !important;
+  margin-left: 0 !important;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
 .animate-arrow {
-  transform: translateY(10px);  /* Adjust the movement of the arrow */
+  animation: bounce 0.3s ease-in-out;
 }
 
-/* Custom styling for the language dropdown */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Pulse animation for translating indicator */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.translating-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+/* Mobile devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .card {
+    padding: 1rem !important;
+    width: 95% !important;
+  }
+
+  h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .form-label {
+    font-size: 0.85rem !important;
+  }
+
+  .form-select,
+  .form-control {
+    font-size: 0.95rem !important;
+  }
+
+  .row.mb-3 {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .col-md-4 {
+    margin-bottom: 1rem !important;
+  }
+
+  textarea.form-control {
+    font-size: 1rem !important;
+  }
+
+  .btn {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* Small devices (tablets, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .card {
+    width: 95% !important;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .card {
+    width: 90% !important;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .card {
+    max-width: 900px;
+  }
+}
+
+/* ========== TEXTAREA CUSTOMIZATION ========== */
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+  transition: var(--transition);
+}
+
+textarea.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  transform: scale(1.01);
+}
+
+/* ========== TRANSLATION OUTPUT ========== */
+.translation-output {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 8px;
+  transition: var(--transition);
+  border: 1px solid #e9ecef;
+}
+
+.translation-output:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+  transition: var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-outline-secondary:hover {
+  transform: rotate(180deg);
+}
+
+/* ========== LOADING INDICATOR ========== */
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.15em;
+}
+
+/* ========== BACKGROUND GRADIENT ========== */
+/* Moved to dark mode section for class-based control */
+
+/* Alternative light gradients (uncomment to try different looks) */
+/* Soft Blue to Pink:
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+*/
+/* Warm Sunset:
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+*/
+/* Fresh Mint:
+  background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+*/
+/* Ocean Breeze:
+  background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+*/
+
+/* ========== CARD ENHANCEMENTS ========== */
+.card {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95) !important;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-2px);
+}
+
+/* ========== CHARACTER COUNTER ========== */
+.character-counter {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.character-counter.warning {
+  color: #ff9800;
+}
+
+.character-counter.danger {
+  color: var(--danger-color);
+  font-weight: bold;
+}
+
+/* ========== ALERT ENHANCEMENTS ========== */
+.alert {
+  border-radius: 8px;
+  border: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* ========== LANGUAGE FLAG EMOJIS ========== */
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.language-flag {
+  font-size: 1.2rem;
+}
+
+/* ========== ACCESSIBILITY ========== */
+.form-control:focus,
+.form-select:focus,
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid var(--text-dark);
+  }
+
+  .btn {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========== TOUCH DEVICE OPTIMIZATIONS ========== */
+@media (hover: none) and (pointer: coarse) {
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .form-select,
+  .form-control {
+    min-height: 44px;
+  }
+
+  .dropdown-item {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+  .bg-gradient {
+    background: white;
+  }
+
+  .btn,
+  .dropdown,
+  .character-counter {
+    display: none;
+  }
+
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #000;
+  }
+}
+
+/* ========== LEGACY SUPPORT (for older classes) ========== */
 .custom-dropdown {
   font-size: 1.1rem;
   font-weight: 500;
   padding: 0.75rem;
   border-radius: 10px;
-  background-color: #f8f9fa;
-  border: 1px solid #ced4da;
-  transition: all 0.3s ease;
+  background-color: var(--light-bg);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
 }
 
 .custom-dropdown:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: var(--primary-color);
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.custom-dropdown option {
-  padding: 10px;
+/* ========== UTILITY CLASSES ========== */
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.custom-dropdown option:hover {
-  background-color: #f1f1f1;
+.glass-effect {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* Default Light Mode */
-:root {
-  --bg-color: white;
-  --text-color: black;
-  --input-bg-color: #f8f9fa;
-  --button-bg-color: #000000;
-  --button-text-color: white;
+/* ========== DARK MODE SUPPORT (Class-based with toggle) ========== */
+/* Default: Always show bright gradient */
+.bg-gradient {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  min-height: 100vh;
+  padding: 1rem;
+  transition: background 0.3s ease;
 }
 
-.light-mode {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+/* Dark theme styles when .dark-theme is applied */
+.dark-theme :root {
+  --light-bg: #2d3748;
+  --border-color: #4a5568;
+  --text-dark: #e2e8f0;
+  --text-muted: #a0aec0;
 }
 
-.light-mode .card {
-  background-color: #ffffff;
+.dark-theme .bg-gradient {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
 }
 
-.light-mode .btn {
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
+.dark-theme .card {
+  background: rgba(45, 55, 72, 0.98) !important;
+  color: #e2e8f0;
 }
 
-/* Dark Mode Styles */
-.dark-mode {
-  background-color: #343a40; /* Dark background color */
-  color: white; /* Light text color */
+.dark-theme .text-primary {
+  color: #8ec5fc !important;
 }
 
-.dark-mode .card {
-  background-color: #454d55; /* Dark card background */
+.dark-theme .text-muted {
+  color: #a0aec0 !important;
 }
 
-.dark-mode .btn {
-  background-color: #17a2b8; /* Button color for dark mode */
-  color: white; /* Button text color */
+.dark-theme .translation-output {
+  background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
 }
 
-/* Optional: Style for text input, select dropdown, etc. */
-.dark-mode .form-control {
-  background-color: #555; /* Dark input */
-  color: white; /* Light text inside input */
+.dark-theme .translation-output p {
+  color: #e2e8f0 !important;
 }
 
-.dark-mode .form-select {
-  background-color: #555;
+.dark-theme .form-control,
+.dark-theme .form-select {
+  background-color: #2d3748;
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+
+.dark-theme .form-control:focus,
+.dark-theme .form-select:focus {
+  background-color: #2d3748;
+  border-color: var(--primary-color);
+}
+
+.dark-theme .form-label {
+  color: #e2e8f0 !important;
+}
+
+.dark-theme .bg-light {
+  background-color: #2d3748 !important;
+}
+
+.dark-theme .border {
+  border-color: #4a5568 !important;
+}
+
+/* Theme toggle button animation */
+.btn-outline-secondary {
+  transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  transform: rotate(180deg) scale(1.1);
+  background-color: var(--primary-color);
   color: white;
+  border-color: var(--primary-color);
 }
 
-.dark-mode .form-control,
-.dark-mode .form-select {
-  border-color: #666;
-}
-
-/* Custom dark mode dropdown */
-.dark-mode .custom-dropdown {
-  background-color: #444;  /* Darker background for dark mode */
-  color: white;
-  border-color: #666;  /* Lighter border for dark mode */
-}
-
-/* Button styles for light and dark mode */
-.light-mode .btn, 
-.dark-mode .btn {
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-/* RTL Styles */
-[dir="rtl"] .form-control,
-[dir="rtl"] .form-select {
-  text-align: right;
-}
-
-[dir="rtl"] .card {
-  text-align: right;
+/* Optional: Respect system preference by default */
+@media (prefers-color-scheme: dark) {
+  /* This is now handled by the toggle, but we keep it for initial load */
 }
