@@ -48,5 +48,5 @@
     "postcss": "^8.5.1",
     "tailwindcss": "^4.0.0"
   },
-  "homepage": "https://www.dinukawickramarathana.me/Hello-World"
+  "homepage": "."
 }
